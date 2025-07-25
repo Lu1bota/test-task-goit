@@ -1,0 +1,59 @@
+.header {
+  background-color: #f9f9f9;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.containerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.headerTitle {
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navItem {
+  margin: 0;
+}
+
+.navLink {
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: #242424;
+  position: relative;
+  padding: 0.2rem 0.4rem;
+  transition: color 0.3s ease;
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background-color: #0070f3;
+  transition: width 0.3s ease;
+}
+
+.navLink:hover,
+.navLink:focus {
+  color: #0070f3;
+  outline: none;
+}
+
+.navLink:hover::after,
+.navLink:focus::after {
+  width: 100%;
+}
