@@ -7,8 +7,6 @@ export default async function Home() {
 
   return (
     <Container>
-      <h1>Пости</h1>
-
       <PostsList data={posts} />
     </Container>
   );

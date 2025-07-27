@@ -1,9 +1,10 @@
 .footer {
   background-color: #242424;
   color: #f4f4f4;
-  padding: 1.5rem 2rem;
+  padding-top: 16px;
+  padding-bottom: 16px;
   border-top: 1px solid #444;
-  font-size: 0.95rem;
+  font-size: 13px;
 }
 
 .footerContent {
@@ -11,7 +12,7 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 8px;
 }
 
 .footerCopy {
@@ -25,4 +26,16 @@
 .footerText {
   margin: 0;
   font-style: italic;
+}
+
+@media (min-width: 1200px) {
+  .footer {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    font-size: 16px;
+  }
+
+  .footerContent {
+    gap: 24px;
+  }
 }

@@ -1,0 +1,52 @@
+.about {
+  line-height: 1.6;
+  display: flex;
+  margin-top: 40px;
+}
+
+.aboutContainer {
+  max-width: 100%;
+  padding: 20px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.aboutTitle {
+  font-size: 24px;
+  margin-bottom: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.aboutParagraph {
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.aboutText {
+  font-size: 16px;
+}
+
+@media (min-width: 1200px) {
+  .about {
+    margin-top: 80px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .aboutTitle {
+    font-size: 32px;
+    margin-bottom: 24px;
+  }
+
+  .aboutParagraph {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .aboutText {
+    font-size: 18px;
+  }
+}

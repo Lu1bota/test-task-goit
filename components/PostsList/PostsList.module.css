@@ -1,3 +1,11 @@
+.mainTitle {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: center;
+  margin-top: 24px;
+}
+
 .postsList {
   display: flex;
   flex-direction: column;
@@ -24,14 +32,19 @@
 
 .postTitle {
   font-size: 16px;
-  color: #212529;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 12px;
+  max-width: 200px;
 }
 
 .postButton {
   align-self: flex-start;
-  padding: 10px 19px;
+  width: 90px;
+  height: 36px;
+  padding: 10px;
   background-color: #dee2e6;
-  color: #333;
   text-decoration: none;
   border: none;
   border-radius: 8px;
@@ -39,6 +52,10 @@
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .postButton:hover {
@@ -46,9 +63,12 @@
 }
 
 @media (min-width: 1200px) {
+  .mainTitle {
+    font-size: 36px;
+    margin-bottom: 32px;
+  }
+
   .postsList {
-    /* flex-direction: row;
-    flex-wrap: wrap; */
     gap: 24px;
   }
 
@@ -60,9 +80,12 @@
 
   .postTitle {
     font-size: 20px;
+    max-width: none;
   }
 
   .postButton {
     font-size: 15px;
+    width: 110px;
+    height: 40px;
   }
 }
