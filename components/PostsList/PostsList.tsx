@@ -9,7 +9,7 @@ interface PostsListProps {
 export default function PostsList({ data }: PostsListProps) {
   return (
     <>
-      <h1 className={css.mainTitle}>Пости</h1>
+      <h2 className={css.mainTitle}>Пости</h2>
 
       <ul className={css.postsList}>
         {data.map((post) => (

@@ -1,5 +1,35 @@
 import Container from "@/components/Container/Container";
 import css from "./AboutPage.module.css";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://test-task-goit-cyan.vercel.app/about"),
+  title: "Про нас",
+  description:
+    "Інформація про автора Міні-блогу, його цілі, цінності та історію створення проєкту.",
+  openGraph: {
+    title: "Міні-блог",
+    description:
+      "Інформація про автора Міні-блогу, його цілі, цінності та історію створення проєкту.",
+    url: "https://test-task-goit-cyan.vercel.app/about",
+    images: [
+      {
+        url: "/SEO_OpenGraph_Miniblog.jpg",
+        width: 1200,
+        height: 630,
+        alt: "mini blog preview",
+      },
+    ],
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Міні-блог",
+    description:
+      "Інформація про автора Міні-блогу, його цілі, цінності та історію створення проєкту.",
+    images: [],
+  },
+};
 
 export default function AboutPage() {
   return (
