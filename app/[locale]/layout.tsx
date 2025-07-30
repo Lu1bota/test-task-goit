@@ -49,18 +49,26 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export function generateStaticParams() {
+  return ["uk", "en"].map((lng) => ({ lng }));
+}
+
+export default async function RootLayout({
   children,
-}: Readonly<{
+  params,
+}: {
   children: React.ReactNode;
-}>) {
+  params: { locale: string; lng: string };
+}) {
+  const { locale, lng } = await params;
+
   return (
-    <html lang="en">
+    <html lang={lng}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <TanStackProvider>
-          <Header />
+          <Header locale={locale} />
           <main>{children}</main>
-          <Footer />
+          <Footer locale={locale} />
           <Toaster />
         </TanStackProvider>
       </body>

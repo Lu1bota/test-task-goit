@@ -1,0 +1,20 @@
+.select {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.select:focus {
+  border-color: #0070f3;
+  outline: none;
+}
+
+.option {
+  background-color: #fff;
+  color: #333;
+}

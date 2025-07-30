@@ -1,8 +1,8 @@
 "use client";
 
-import { Post } from "@/types/posts";
 import { useRouter } from "next/navigation";
 import css from "./PostDetailsClient.module.css";
+import { Post } from "@/types/posts";
 import Container from "@/components/Container/Container";
 
 interface PostDetailsClientProps {

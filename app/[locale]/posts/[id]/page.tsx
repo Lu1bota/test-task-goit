@@ -1,6 +1,8 @@
 import { getPosts, getPostsById } from "@/lib/api";
 import PostDetailsClient from "./PostDetails.client";
 import { Metadata } from "next";
+import initTranslations from "@/app/i18n";
+import TranslationsProvider from "@/components/TranslationsProvider/TranslationsProvider";
 
 export async function generateStaticParams() {
   const posts = await getPosts();
@@ -11,7 +13,7 @@ export async function generateStaticParams() {
 }
 
 interface PostDetailsProps {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string; locale: string }>;
 }
 
 export async function generateMetadata({
@@ -49,9 +51,21 @@ export async function generateMetadata({
   };
 }
 
+const i18nNamespaces = ["postDetails"];
+
 export default async function PostDetails({ params }: PostDetailsProps) {
-  const { id } = await params;
+  const { id, locale } = await params;
   const post = await getPostsById(+id);
 
-  return <PostDetailsClient data={post} />;
+  const { resources } = await initTranslations(locale, i18nNamespaces);
+
+  return (
+    <TranslationsProvider
+      resources={resources}
+      locale={locale}
+      namespaces={i18nNamespaces}
+    >
+      <PostDetailsClient data={post} />;
+    </TranslationsProvider>
+  );
 }

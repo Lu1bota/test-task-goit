@@ -3,9 +3,11 @@
 import Link from "next/link";
 import css from "./Navigation.module.css";
 import { usePathname } from "next/navigation";
+import { useTranslation } from "react-i18next";
 
 export default function Navigation() {
   const pathname = usePathname();
+  const { t } = useTranslation();
 
   return (
     <nav className={css.nav}>
@@ -13,17 +15,17 @@ export default function Navigation() {
         <li className={css.navItem}>
           <Link
             href="/"
-            className={`${pathname === "/" ? `${css.navLink} ${css.active}` : css.navLink}`}
+            className={`${pathname === "/en" || pathname === "/uk" ? `${css.navLink} ${css.active}` : css.navLink}`}
           >
-            Головна
+            {t("navLink")}
           </Link>
         </li>
         <li className={css.navItem}>
           <Link
             href="/about"
-            className={`${pathname === "/about" ? `${css.navLink} ${css.active}` : css.navLink}`}
+            className={`${pathname === "/en/about" || pathname === "/uk/about" ? `${css.navLink} ${css.active}` : css.navLink}`}
           >
-            Про нас
+            {t("common:about_us")}
           </Link>
         </li>
       </ul>
