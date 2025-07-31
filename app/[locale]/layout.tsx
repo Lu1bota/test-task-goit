@@ -50,7 +50,7 @@ export const metadata: Metadata = {
 };
 
 export function generateStaticParams() {
-  return ["uk", "en"].map((lng) => ({ lng }));
+  return ["uk", "en"].map((locale) => ({ locale }));
 }
 
 export default async function RootLayout({
@@ -58,12 +58,12 @@ export default async function RootLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string; lng: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale, lng } = await params;
+  const { locale } = await params;
 
   return (
-    <html lang={lng}>
+    <html lang={locale}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <TanStackProvider>
           <Header locale={locale} />

@@ -36,17 +36,24 @@ export default function LanguageChanger() {
   };
 
   return (
-    <select
-      onChange={handleChange}
-      value={currentLocale}
-      className={css.select}
-    >
-      <option value="uk" className={css.option}>
-        Uk
-      </option>
-      <option value="en" className={css.option}>
-        En
-      </option>
-    </select>
+    <>
+      <label htmlFor="language-select" className={css.visuallyHidden}>
+        Select language
+      </label>
+
+      <select
+        id="language-select"
+        onChange={handleChange}
+        value={currentLocale}
+        className={css.select}
+      >
+        <option value="uk" className={css.option}>
+          Uk
+        </option>
+        <option value="en" className={css.option}>
+          En
+        </option>
+      </select>
+    </>
   );
 }
