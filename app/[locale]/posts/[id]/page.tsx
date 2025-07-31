@@ -3,6 +3,11 @@ import PostDetailsClient from "./PostDetails.client";
 import { Metadata } from "next";
 import initTranslations from "@/app/i18n";
 import TranslationsProvider from "@/components/TranslationsProvider/TranslationsProvider";
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
 
 export async function generateStaticParams() {
   const posts = await getPosts();
@@ -55,7 +60,13 @@ const i18nNamespaces = ["postDetails"];
 
 export default async function PostDetails({ params }: PostDetailsProps) {
   const { id, locale } = await params;
-  const post = await getPostsById(+id);
+  const postId = +id;
+  // const post = await getPostsById(+id);
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ["post", postId],
+    queryFn: () => getPostsById(postId),
+  });
 
   const { resources } = await initTranslations(locale, i18nNamespaces);
 
@@ -65,7 +76,9 @@ export default async function PostDetails({ params }: PostDetailsProps) {
       locale={locale}
       namespaces={i18nNamespaces}
     >
-      <PostDetailsClient data={post} />;
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <PostDetailsClient />;
+      </HydrationBoundary>
     </TranslationsProvider>
   );
 }

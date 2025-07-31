@@ -1,33 +1,45 @@
 "use client";
 
-import { Post } from "@/types/posts";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import css from "./PostDetailsClient.module.css";
 import Container from "@/components/Container/Container";
-import { useTranslation } from "react-i18next";
+import { useQuery } from "@tanstack/react-query";
+import { getPostsById } from "@/lib/api";
+import Loader from "../../loading";
 
-interface PostDetailsClientProps {
-  data: Post;
-}
+export default function PostDetailsClient() {
+  const { id } = useParams<{ id: string }>();
+  const postId = +id;
+  const { data: post, isLoading } = useQuery({
+    queryKey: ["post", postId],
+    queryFn: () => getPostsById(postId),
+    refetchOnMount: false,
+  });
 
-export default function PostDetailsClient({ data }: PostDetailsClientProps) {
   const router = useRouter();
-  const { t } = useTranslation();
 
   function handleRouter() {
     router.push("/");
   }
 
   return (
-    <Container>
-      <div className={css.postContainer}>
-        <h3 className={css.postTitle}>{data.title}</h3>
-        <p className={css.postBody}>{data.body}</p>
+    <>
+      {isLoading && <Loader />}
 
-        <button onClick={handleRouter} className={css.postButton}>
-          {t("buttonBack")}
-        </button>
-      </div>
-    </Container>
+      <Container>
+        <div className={css.postContainer}>
+          {post && (
+            <>
+              <h3 className={css.postTitle}>{post.title}</h3>
+              <p className={css.postBody}>{post.body}</p>
+
+              <button onClick={handleRouter} className={css.postButton}>
+                На головну
+              </button>
+            </>
+          )}
+        </div>
+      </Container>
+    </>
   );
 }
