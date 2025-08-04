@@ -77,7 +77,7 @@ export default async function PostDetails({ params }: PostDetailsProps) {
       namespaces={i18nNamespaces}
     >
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <PostDetailsClient />;
+        <PostDetailsClient />
       </HydrationBoundary>
     </TranslationsProvider>
   );

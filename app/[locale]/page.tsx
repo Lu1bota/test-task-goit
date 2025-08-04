@@ -18,7 +18,7 @@ export default async function HomePage({ params }: HomePageProps) {
       locale={locale}
       namespaces={i18nNamespaces}
     >
-      <HomePageClient />;
+      <HomePageClient />
     </TranslationsProvider>
   );
 }
